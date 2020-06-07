@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 
 namespace AcmeUI.Components
@@ -26,5 +27,17 @@ namespace AcmeUI.Components
         /// </summary>
         [Parameter]
         public string SubmenuItemsProperty { get; set; }
+
+        protected string GetMenuItemTitle(TItem menItem)
+        {
+            var titleProperty = typeof(TItem).GetProperty(TitleProperty);
+
+            if (titleProperty == null)
+            {
+                throw new ArgumentException($"No such property {TitleProperty}");
+            }
+
+            return titleProperty.GetValue(menItem).ToString();
+        }
     }
 }

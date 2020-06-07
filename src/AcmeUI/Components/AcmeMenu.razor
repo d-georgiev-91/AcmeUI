@@ -2,5 +2,12 @@
 @inherits AcmeMenuBase<TItem>
 
 <div class="acme-menu">
-    This Blazor component is defined in the <strong>AcmeUI</strong> package.
+    <ul>
+        @foreach (var menuItem in Data)
+        {
+            <li>
+                @GetMenuItemTitle(menuItem)
+            </li>
+        }
+    </ul>
 </div>
