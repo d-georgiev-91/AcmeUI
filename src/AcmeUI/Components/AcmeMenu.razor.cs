@@ -5,6 +5,9 @@ namespace AcmeUI.Components
 {
     public class AcmeMenuBase<TItem> : ComponentBase
     {
+        /// <summary>
+        /// Gets or sets the list of menu items of <see cref="TItem"/>
+        /// </summary>
         [Parameter]
         public IList<TItem> Data { get; set; }
 
