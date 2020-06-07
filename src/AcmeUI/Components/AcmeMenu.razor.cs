@@ -20,5 +20,11 @@ namespace AcmeUI.Components
         /// </summary>
         [Parameter]
         public string TitleProperty { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name property specifying children menu items
+        /// </summary>
+        [Parameter]
+        public string SubmenuItemsProperty { get; set; }
     }
 }
