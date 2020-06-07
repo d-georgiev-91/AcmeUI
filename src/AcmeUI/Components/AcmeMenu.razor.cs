@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Components;
 
 namespace AcmeUI.Components
 {
+    /// <summary>
+    /// Defines menu component with items of type <see cref="IList{TItem}"/>
+    /// </summary>
+    /// <typeparam name="TItem">The items type</typeparam>
     public class AcmeMenuBase<TItem> : ComponentBase
     {
         /// <summary>
