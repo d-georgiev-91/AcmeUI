@@ -1,8 +1,10 @@
 ﻿@using AcmeUIClientSide.Models
 @inherits MainLayoutBase
 
-<AcmeMenu Data="@MenuItems"
+<AcmeMenu TItem="MenuItem"
+          Data="@MenuItems"
           TitleProperty="@nameof(MenuItem.Title)"
-          SubmenuItemsProperty="@nameof(MenuItem.MenuItems)">
+          SubmenuItemsProperty="@nameof(MenuItem.MenuItems)"
+          Selected="@OnItemClick">
 </AcmeMenu>
 

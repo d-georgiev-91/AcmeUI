@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AcmeUI.Components;
 using AcmeUIClientSide.Models;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace AcmeUIClientSide.Shared
 {
     public class MainLayoutBase : LayoutComponentBase
     {
+        [Inject]
+        private IJSRuntime JsRuntime { get; set; }
+
         public IList<MenuItem> MenuItems { get; set; }
 
         protected override Task OnInitializedAsync()
@@ -56,6 +61,11 @@ namespace AcmeUIClientSide.Shared
             };
 
             return base.OnInitializedAsync();
+        }
+
+        public async void OnItemClick(MenuItemEventArgs<MenuItem> eventArgs)
+        {
+            await JsRuntime.InvokeVoidAsync("alert", eventArgs.MenuItem.Title);
         }
     }
 }

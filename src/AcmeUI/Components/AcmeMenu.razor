@@ -5,7 +5,7 @@
     <ul>
         @foreach (var menuItem in Data)
         {
-            <li>
+            <li @onclick="@(() => TriggerMenuItemSelected(menuItem))">
                 @GetMenuItemTitle(menuItem)
             </li>
         }

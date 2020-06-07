@@ -28,6 +28,17 @@ namespace AcmeUI.Components
         [Parameter]
         public string SubmenuItemsProperty { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        public EventCallback<MenuItemEventArgs<TItem>> Selected { get; set; }
+
+        protected void TriggerMenuItemSelected(TItem menuItem)
+        {
+            Selected.InvokeAsync(new MenuItemEventArgs<TItem> { MenuItem = menuItem });
+        }
+
         protected string GetMenuItemTitle(TItem menItem)
         {
             var titleProperty = typeof(TItem).GetProperty(TitleProperty);
