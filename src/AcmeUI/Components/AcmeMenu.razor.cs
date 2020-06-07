@@ -7,5 +7,11 @@ namespace AcmeUI.Components
     {
         [Parameter]
         public IList<TItem> Data { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name property specifying menu item title
+        /// </summary>
+        [Parameter]
+        public string TitleProperty { get; set; }
     }
 }

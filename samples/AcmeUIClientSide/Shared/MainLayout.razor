@@ -1,5 +1,7 @@
-﻿@inherits MainLayoutBase
+﻿@using AcmeUIClientSide.Models
+@inherits MainLayoutBase
 
-<AcmeMenu Data="@MenuItems">
+<AcmeMenu Data="@MenuItems"
+          TitleProperty="@nameof(MenuItem.Title)">
 </AcmeMenu>
 
