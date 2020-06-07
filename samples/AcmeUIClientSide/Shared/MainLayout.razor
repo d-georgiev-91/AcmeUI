@@ -2,6 +2,7 @@
 @inherits MainLayoutBase
 
 <AcmeMenu Data="@MenuItems"
-          TitleProperty="@nameof(MenuItem.Title)">
+          TitleProperty="@nameof(MenuItem.Title)"
+          SubmenuItemsProperty="@nameof(MenuItem.MenuItems)">
 </AcmeMenu>
 
