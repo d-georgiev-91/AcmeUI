@@ -40,14 +40,29 @@ namespace AcmeUI.Components
         [Parameter]
         public EventCallback<MenuItemEventArgs<TItem>> Selected { get; set; }
 
+
+        /// <summary>
+        /// Triggers menu item selected event
+        /// </summary>
+        /// <param name="menuItem">The menu item that is selected</param>
         protected void TriggerMenuItemSelected(TItem menuItem)
         {
             Selected.InvokeAsync(new MenuItemEventArgs<TItem> { MenuItem = menuItem });
         }
 
-        protected string GetMenuItemTitle(TItem menItem) =>
-            ReflectionHelper.GetPropertyValue(menItem, TitlePropertyName).ToString();
+        /// <summary>
+        /// Retrieves the menu item title
+        /// </summary>
+        /// <param name="menuItem">The menu item</param>
+        /// <returns>The title of the menu item</returns>
+        protected string GetMenuItemTitle(TItem menuItem) =>
+            ReflectionHelper.GetPropertyValue(menuItem, TitlePropertyName).ToString();
 
+        /// <summary>
+        /// Retrieves the children of the menu items
+        /// </summary>
+        /// <param name="menuItem">The menu item</param>
+        /// <returns>List of menu items if such exists, otherwise an empty list ist returned</returns>
         protected IList<TItem> GetChildren(TItem menuItem) =>
             (IList<TItem>)ReflectionHelper.GetPropertyValue(menuItem, SubmenuItemsPropertyName) ?? new List<TItem>();
     }
