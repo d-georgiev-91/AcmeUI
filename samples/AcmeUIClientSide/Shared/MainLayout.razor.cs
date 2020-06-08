@@ -18,7 +18,6 @@ namespace AcmeUIClientSide.Shared
         {
             MenuItems = new List<MenuItem>
             {
-                // sample URLs for SPA navigation
                 new MenuItem
                 {
                     Title = "Company",
@@ -38,7 +37,6 @@ namespace AcmeUIClientSide.Shared
                         }
                     }
                 },
-                // sample URLs for external navigation
                 new MenuItem
                 {
                     Title = "Services",

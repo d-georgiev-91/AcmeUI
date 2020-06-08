@@ -29,10 +29,14 @@ namespace AcmeUI.Components
         public string SubmenuItemsProperty { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the selected event callback
         /// </summary>
         [Parameter]
         public EventCallback<MenuItemEventArgs<TItem>> Selected { get; set; }
+
+        //TODO ENCAPSULATE THIS
+        [Parameter]
+        public bool IsSubMenu { get; set; }
 
         protected void TriggerMenuItemSelected(TItem menuItem)
         {
@@ -49,6 +53,18 @@ namespace AcmeUI.Components
             }
 
             return titleProperty.GetValue(menItem).ToString();
+        }
+
+        protected IList<TItem> GetChildren(TItem menuItem)
+        {
+            var submenuItemsProperty = typeof(TItem).GetProperty(SubmenuItemsProperty);
+
+            if (submenuItemsProperty == null)
+            {
+                throw new ArgumentException($"No such property {SubmenuItemsProperty}");
+            }
+
+            return (IList<TItem>)submenuItemsProperty.GetValue(menuItem) ?? new List<TItem>();
         }
     }
 }
