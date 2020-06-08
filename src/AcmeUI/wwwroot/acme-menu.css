@@ -1,52 +1,83 @@
-﻿.acme-menu-title.acme-subnavigation:after {
-    content: '\0025BE';
-}
-
-.acme-submenu .acme-menu-title.acme-subnavigation:after {
-    content: '\0025B8';
-}
-
-.acme-menu-title {
-    color: #000;
-    display: block;
-    padding: 10px;
-    cursor: default;
-}
-
-    .acme-menu-title:hover {
-        background: gray;
-    }
-
-.acme-menu {
-    padding: 0;
+﻿.acme-menu {
+    z-index: 100;
     margin: 0;
+    padding: 0;
+    position: relative;
+    list-style: none;
 }
 
     .acme-menu .acme-menu-item {
-        float: left;
-        display: inline;
         position: relative;
+        display: inline;
+        float: left;
+    }
+
+        .acme-menu .acme-menu-item .acme-menu-title {
+            display: block;
+            position: relative;
+            background: #fff;
+            color: #000;
+            padding: 10px 14px;
+            text-decoration: none;
+        }
+
+        .acme-menu .acme-menu-item:hover > .acme-menu-title {
+            background: #D8D8D8;
+        }
+
+        .acme-menu .acme-menu-item .acme-menu {
+            position: absolute;
+            left: -5000px;
+            top: auto;
+            opacity: 0;
+            width: 170px;
+            visibility: hidden;
+            box-shadow: 2px 2px 5px gray;
+            transition: opacity .3s, visibility 0s .3s, left 0s .3s;
+        }
+
+        .acme-menu .acme-menu-item:hover > .acme-menu {
+            visibility: visible;
+            left: 0;
+            opacity: 1;
+            transition: opacity .5s;
+        }
+
+        .acme-menu .acme-menu-item .acme-menu .acme-menu-item {
+            display: list-item;
+            float: none;
+        }
+
+            .acme-menu .acme-menu-item .acme-menu .acme-menu-item .acme-menu {
+                top: 5px;
+                left: 100%;
+            }
+
+    .acme-menu .acme-menu .acme-menu-item:hover > .acme-menu-title {
+        color: #FF2377;
         background: #fff;
     }
 
-        .acme-menu .acme-menu-item .acme-menu {
-            left: 0;
-            top: 100%;
-        }
-
-    .acme-menu .acme-menu {
-        display: none;
+    .acme-menu .acme-menu .acme-menu-item:hover > .acme-menu {
+        left: 100%;
     }
 
-.acme-menu-item:hover > .acme-menu {
-    display: block;
-    position: absolute;
-    z-index: 1000;
-    width: 120px;
-}
+        .acme-menu .acme-menu-item > .acme-menu-title:after {
+            content: "\0025BE";
+            float: right;
+            padding-left: 5px;
+            font-size: 18px;
+            line-height: 27px;
+        }
 
-.acme-menu .acme-menu .acme-menu-item:hover > .acme-menu {
-    right: -120px;
-    top: 5px;
-    left: auto;
+        .acme-menu .acme-menu-item > .acme-menu-title:only-child:after {
+            display: none;
+        }
+
+    .acme-menu .acme-menu-item .acme-menu .acme-menu-item > .acme-menu-title:after {
+        content: '\0025B8';
+    }
+
+.acme-menu-title {
+    cursor: default;
 }

@@ -1,23 +1,21 @@
 ﻿@typeparam TItem
 @inherits AcmeMenuBase<TItem>
 
-<ul class="acme-menu@(IsSubMenu ? " acme-submenu": string.Empty)">
+<ul class="acme-menu">
     @foreach (var menuItem in Data)
     {
         <li class="acme-menu-item" @onclick="@(() => TriggerMenuItemSelected(menuItem))"
             @onclick:stopPropagation="true">
+            <span class="acme-menu-title">@GetMenuItemTitle(menuItem)</span>
             @{
                 var submenuItems = GetChildren(menuItem);
                 var hasSubmenuItems = submenuItems.Any();
-
-                <span class="acme-menu-title@(hasSubmenuItems ? " acme-subnavigation" : string.Empty)">@GetMenuItemTitle(menuItem)</span>
 
                 if (hasSubmenuItems)
                 {
                     <AcmeMenu TItem="@TItem"
                               Data="@submenuItems"
                               TitleProperty="@TitleProperty"
-                              IsSubMenu="true"
                               SubmenuItemsProperty="@SubmenuItemsProperty"
                               Selected="@Selected">
                     </AcmeMenu>

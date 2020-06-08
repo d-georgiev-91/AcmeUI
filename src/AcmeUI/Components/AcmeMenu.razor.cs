@@ -34,10 +34,6 @@ namespace AcmeUI.Components
         [Parameter]
         public EventCallback<MenuItemEventArgs<TItem>> Selected { get; set; }
 
-        //TODO ENCAPSULATE THIS
-        [Parameter]
-        public bool IsSubMenu { get; set; }
-
         protected void TriggerMenuItemSelected(TItem menuItem)
         {
             Selected.InvokeAsync(new MenuItemEventArgs<TItem> { MenuItem = menuItem });
