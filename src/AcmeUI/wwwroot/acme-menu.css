@@ -1,5 +1,52 @@
-﻿.acme-menu {
-    border: 2px dashed red;
-    padding: 1em;
-    margin: 1em 0;
+﻿.acme-menu-title.acme-subnavigation:after {
+    content: '\0025BE';
+}
+
+.acme-submenu .acme-menu-title.acme-subnavigation:after {
+    content: '\0025B8';
+}
+
+.acme-menu-title {
+    color: #000;
+    display: block;
+    padding: 10px;
+    cursor: default;
+}
+
+    .acme-menu-title:hover {
+        background: gray;
+    }
+
+.acme-menu {
+    padding: 0;
+    margin: 0;
+}
+
+    .acme-menu .acme-menu-item {
+        float: left;
+        display: inline;
+        position: relative;
+        background: #fff;
+    }
+
+        .acme-menu .acme-menu-item .acme-menu {
+            left: 0;
+            top: 100%;
+        }
+
+    .acme-menu .acme-menu {
+        display: none;
+    }
+
+.acme-menu-item:hover > .acme-menu {
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    width: 120px;
+}
+
+.acme-menu .acme-menu .acme-menu-item:hover > .acme-menu {
+    right: -120px;
+    top: 5px;
+    left: auto;
 }

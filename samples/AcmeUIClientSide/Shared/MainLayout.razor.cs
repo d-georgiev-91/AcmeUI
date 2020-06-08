@@ -20,41 +20,100 @@ namespace AcmeUIClientSide.Shared
             {
                 new MenuItem
                 {
-                    Title = "Company",
+                    Title = "Item 1",
                     MenuItems = new List<MenuItem>
                     {
                         new MenuItem
                         {
-                            Title = "Overview",
+                            Title = "Item 1.1"
                         },
                         new MenuItem
                         {
-                            Title = "Events",
-                        },
-                        new MenuItem
-                        {
-                            Title = "Careers",
+                            Title = "Item 1.2",
+                            MenuItems = new List<MenuItem>
+                            {
+                                new MenuItem
+                                {
+                                    Title = "Item 1.2.1"
+                                },
+                                new MenuItem
+                                {
+                                    Title = "Item 1.2.2"
+                                }
+                            }
                         }
                     }
                 },
                 new MenuItem
                 {
-                    Title = "Services",
+                    Title = "Item 2",
                     MenuItems = new List<MenuItem>
                     {
                         new MenuItem
                         {
-                            Title = "Consulting"
+                            Title = "Item 2.1",
+                            MenuItems = new List<MenuItem>
+                            {
+                                new MenuItem
+                                {
+                                    Title = "Item 2.1.1"
+                                },
+                                new MenuItem
+                                {
+                                    Title = "Item 2.1.2"
+                                },
+                                new MenuItem
+                                {
+                                    Title = "Item 2.1.3"
+                                }
+                            }
                         },
                         new MenuItem
                         {
-                            Title = "Education"
+                            Title = "Item 2.2",
+                            MenuItems = new List<MenuItem>
+                            {
+                                new MenuItem
+                                {
+                                    Title = "Item 2.2.1"
+                                },
+                                new MenuItem
+                                {
+                                    Title = "Item 2.2.2"
+                                }
+                            }
+                        },
+                        new MenuItem
+                        {
+                            Title = "Item 2.3",
+                            MenuItems = new List<MenuItem>
+                            {
+                                new MenuItem
+                                {
+                                    Title = "Item 2.3.1",
+                                    MenuItems = new List<MenuItem>
+                                    {
+                                        new MenuItem
+                                        {
+                                            Title = "Item 2.3.1.1"
+                                        },
+                                        new MenuItem
+                                        {
+                                            Title = "Item 2.3.1.2"
+                                        }
+                                    }
+                                },
+                                new MenuItem
+                                {
+                                    Title = "Item 2.3.2"
+                                }
+                            }
                         }
                     }
                 },
                 new MenuItem
                 {
-                    Title = "Contact"
+                    Title = "Item 3"
                 }
             };
 
