@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using AcmeUI.Helpers;
 using Microsoft.AspNetCore.Components;
 
 namespace AcmeUI.Components
@@ -11,6 +11,12 @@ namespace AcmeUI.Components
     public class AcmeMenuBase<TItem> : ComponentBase
     {
         /// <summary>
+        /// Reference to Reflection helper
+        /// </summary>
+        [Inject]
+        protected ReflectionHelper ReflectionHelper { get; set; }
+
+        /// <summary>
         /// Gets or sets the list of menu items of <see cref="TItem"/>
         /// </summary>
         [Parameter]
@@ -20,13 +26,13 @@ namespace AcmeUI.Components
         /// Gets or sets the name property specifying menu item title
         /// </summary>
         [Parameter]
-        public string TitleProperty { get; set; }
+        public string TitlePropertyName { get; set; }
 
         /// <summary>
         /// Gets or sets the name property specifying children menu items
         /// </summary>
         [Parameter]
-        public string SubmenuItemsProperty { get; set; }
+        public string SubmenuItemsPropertyName { get; set; }
 
         /// <summary>
         /// Gets or sets the selected event callback
@@ -39,28 +45,10 @@ namespace AcmeUI.Components
             Selected.InvokeAsync(new MenuItemEventArgs<TItem> { MenuItem = menuItem });
         }
 
-        protected string GetMenuItemTitle(TItem menItem)
-        {
-            var titleProperty = typeof(TItem).GetProperty(TitleProperty);
+        protected string GetMenuItemTitle(TItem menItem) =>
+            ReflectionHelper.GetPropertyValue(menItem, TitlePropertyName).ToString();
 
-            if (titleProperty == null)
-            {
-                throw new ArgumentException($"No such property {TitleProperty}");
-            }
-
-            return titleProperty.GetValue(menItem).ToString();
-        }
-
-        protected IList<TItem> GetChildren(TItem menuItem)
-        {
-            var submenuItemsProperty = typeof(TItem).GetProperty(SubmenuItemsProperty);
-
-            if (submenuItemsProperty == null)
-            {
-                throw new ArgumentException($"No such property {SubmenuItemsProperty}");
-            }
-
-            return (IList<TItem>)submenuItemsProperty.GetValue(menuItem) ?? new List<TItem>();
-        }
+        protected IList<TItem> GetChildren(TItem menuItem) =>
+            (IList<TItem>)ReflectionHelper.GetPropertyValue(menuItem, SubmenuItemsPropertyName) ?? new List<TItem>();
     }
 }
